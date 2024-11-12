@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_023ipy9" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.28.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="Decision_0yd91rj" name="Meal Recommendation">
+    <informationRequirement id="InformationRequirement_01j7izo">
+      <requiredInput href="#InputData_1i8axgg" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1c96k32">
+      <requiredDecision href="#Decision_0ycoo3i" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0wnx4ut">
+      <requiredDecision href="#Decision_01t9qjl" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1mpv81u">
+      <requiredDecision href="#Decision_1rzsl50" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_15cq0sr">
+      <requiredInput href="#InputData_01zr4te" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_00nanz4">
+      <input id="Input_1" biodi:width="192.00001525878906">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" typeRef="string" />
+      <rule id="DecisionRule_157984v">
+        <inputEntry id="UnaryTests_11u330s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gkze1g">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ffx4m1">
+        <inputEntry id="UnaryTests_05o11cw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_136ycmu">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1i8axgg" name="Course" />
+  <decision id="Decision_09ltfjb" name="Ingredient Categorization">
+    <informationRequirement id="InformationRequirement_0kg8gb0">
+      <requiredInput href="#InputData_1cmpraw" />
+    </informationRequirement>
+  </decision>
+  <inputData id="InputData_1cmpraw" name="Ingredient List" />
+  <decision id="Decision_1f3n8tn" name="Meal Information Retrieval">
+    <informationRequirement id="InformationRequirement_1xgdeh9">
+      <requiredInput href="#InputData_00e27fn" />
+    </informationRequirement>
+  </decision>
+  <inputData id="InputData_00e27fn" name="Dishes List" />
+  <decision id="Decision_01t9qjl" name="Diet Preferences">
+    <informationRequirement id="InformationRequirement_1ewa30n">
+      <requiredDecision href="#Decision_09ltfjb" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_03wcxuu">
+      <requiredDecision href="#Decision_1f3n8tn" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_0ycoo3i" name="Allergies">
+    <informationRequirement id="InformationRequirement_1nohhci">
+      <requiredDecision href="#Decision_09ltfjb" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_1rzsl50" name="Calorie Limit">
+    <informationRequirement id="InformationRequirement_08k7l7v">
+      <requiredDecision href="#Decision_1f3n8tn" />
+    </informationRequirement>
+  </decision>
+  <inputData id="InputData_01zr4te" name="Guest Preferences" />
+  <textAnnotation id="TextAnnotation_1gnauu4">
+    <text>Pizza, Pasta,
+Main dishes,
+Dessert, etc.</text>
+  </textAnnotation>
+  <association id="Association_1c0t3iw">
+    <sourceRef href="#TextAnnotation_1gnauu4" />
+    <targetRef href="#InputData_1i8axgg" />
+  </association>
+  <textAnnotation id="TextAnnotation_0kznm6k">
+    <text>Groups ingredients into sub categories like "meat", "dairy", etc.</text>
+  </textAnnotation>
+  <association id="Association_14v9mri">
+    <sourceRef href="#TextAnnotation_0kznm6k" />
+    <targetRef href="#Decision_09ltfjb" />
+  </association>
+  <textAnnotation id="TextAnnotation_08dp1qw">
+    <text>This decision retrieves the list of meals and associated data, like ingredients and calorie counts, required to evaluate all other sub-decisions</text>
+  </textAnnotation>
+  <association id="Association_0cbh7bl">
+    <sourceRef href="#TextAnnotation_08dp1qw" />
+    <targetRef href="#Decision_1f3n8tn" />
+  </association>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0yd91rj">
+        <dc:Bounds height="80" width="180" x="380" y="120" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1xagcb7" dmnElementRef="InputData_1i8axgg">
+        <dc:Bounds height="45" width="125" x="138" y="138" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0khwpm6" dmnElementRef="TextAnnotation_1gnauu4">
+        <dc:Bounds height="55" width="100" x="151" y="52" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18azbcg" dmnElementRef="Association_1c0t3iw">
+        <di:waypoint x="201" y="107" />
+        <di:waypoint x="201" y="138" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1ddg1nc" dmnElementRef="InformationRequirement_01j7izo">
+        <di:waypoint x="263" y="161" />
+        <di:waypoint x="360" y="160" />
+        <di:waypoint x="380" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_19oxqbt" dmnElementRef="Decision_09ltfjb">
+        <dc:Bounds height="80" width="180" x="380" y="450" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0f8025f" dmnElementRef="InputData_1cmpraw">
+        <dc:Bounds height="45" width="125" x="407" y="567" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1fxcvgw" dmnElementRef="InformationRequirement_0kg8gb0">
+        <di:waypoint x="470" y="567" />
+        <di:waypoint x="470" y="550" />
+        <di:waypoint x="470" y="530" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1peq8zk" dmnElementRef="TextAnnotation_0kznm6k">
+        <dc:Bounds height="80" width="100" x="240" y="450" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0baxxpm" dmnElementRef="Association_14v9mri">
+        <di:waypoint x="340" y="490" />
+        <di:waypoint x="380" y="490" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_11uyswa" dmnElementRef="Decision_1f3n8tn">
+        <dc:Bounds height="80" width="180" x="600" y="450" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_07d1jof" dmnElementRef="InputData_00e27fn">
+        <dc:Bounds height="45" width="125" x="627" y="567" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0jehopf" dmnElementRef="TextAnnotation_08dp1qw">
+        <dc:Bounds height="80" width="180" x="810" y="450" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0yd5yz8" dmnElementRef="Association_0cbh7bl">
+        <di:waypoint x="810" y="490" />
+        <di:waypoint x="780" y="490" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_00omgez" dmnElementRef="InformationRequirement_1xgdeh9">
+        <di:waypoint x="690" y="567" />
+        <di:waypoint x="690" y="550" />
+        <di:waypoint x="690" y="530" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0f1s7ev" dmnElementRef="Decision_01t9qjl">
+        <dc:Bounds height="80" width="180" x="470" y="280" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0ey5e6t" dmnElementRef="Decision_0ycoo3i">
+        <dc:Bounds height="80" width="180" x="230" y="280" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_03hv4ue" dmnElementRef="Decision_1rzsl50">
+        <dc:Bounds height="80" width="180" x="700" y="280" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0e1d3h1" dmnElementRef="InformationRequirement_1nohhci">
+        <di:waypoint x="470" y="450" />
+        <di:waypoint x="470" y="420" />
+        <di:waypoint x="320" y="420" />
+        <di:waypoint x="320" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0zkhpx1" dmnElementRef="InformationRequirement_1ewa30n">
+        <di:waypoint x="470" y="450" />
+        <di:waypoint x="470" y="420" />
+        <di:waypoint x="530" y="420" />
+        <di:waypoint x="530" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_193p9f0" dmnElementRef="InformationRequirement_03wcxuu">
+        <di:waypoint x="690" y="450" />
+        <di:waypoint x="690" y="420" />
+        <di:waypoint x="590" y="420" />
+        <di:waypoint x="590" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1kpz2xd" dmnElementRef="InformationRequirement_08k7l7v">
+        <di:waypoint x="690" y="450" />
+        <di:waypoint x="690" y="420" />
+        <di:waypoint x="790" y="420" />
+        <di:waypoint x="790" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_18pvk5j" dmnElementRef="InformationRequirement_1c96k32">
+        <di:waypoint x="320" y="280" />
+        <di:waypoint x="320" y="220" />
+        <di:waypoint x="425" y="220" />
+        <di:waypoint x="425" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1kr98ni" dmnElementRef="InformationRequirement_0wnx4ut">
+        <di:waypoint x="560" y="280" />
+        <di:waypoint x="560" y="250" />
+        <di:waypoint x="470" y="250" />
+        <di:waypoint x="470" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_05pl7w7" dmnElementRef="InformationRequirement_1mpv81u">
+        <di:waypoint x="790" y="280" />
+        <di:waypoint x="790" y="220" />
+        <di:waypoint x="515" y="220" />
+        <di:waypoint x="515" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1jefeuw" dmnElementRef="InputData_01zr4te">
+        <dc:Bounds height="45" width="125" x="628" y="138" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_03qlri1" dmnElementRef="InformationRequirement_15cq0sr">
+        <di:waypoint x="628" y="161" />
+        <di:waypoint x="560" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
