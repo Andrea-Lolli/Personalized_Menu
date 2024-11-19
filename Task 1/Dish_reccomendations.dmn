@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_190d5qx" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.28.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
-  <decision id="Decision_1upfn7f" name="Meal by Course">
+  <decision id="Decision_1upfn7f" name="Filtered Meals">
     <informationRequirement id="InformationRequirement_1dex354">
       <requiredInput href="#InputData_169tsmv" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0qwnoev">
+      <requiredInput href="#InputData_0k61hf9" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_166tb1w">
+      <requiredInput href="#InputData_1mt6uq3" />
     </informationRequirement>
     <decisionTable id="DecisionTable_0u4y6tx" hitPolicy="COLLECT">
       <input id="Input_1" label="Course">
@@ -10,10 +16,26 @@
           <text></text>
         </inputExpression>
       </input>
+      <input id="InputClause_1h7s2e2" label="Guest Profile">
+        <inputExpression id="LiteralExpression_00o0kc8" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_04pz4ud" label="Allergy">
+        <inputExpression id="LiteralExpression_1nkex8v" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
       <output id="Output_1" typeRef="string" />
       <rule id="DecisionRule_0zgp5ao">
         <inputEntry id="UnaryTests_0b127u5">
           <text>"Appetizers"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ujf7k6">
+          <text>"Vegetarian" or "Calorie-Conscious"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14xfz3x">
+          <text>"Lactose"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0mr6q08">
           <text>"Bruschette al Pomodoro"</text>
@@ -23,6 +45,12 @@
         <inputEntry id="UnaryTests_1pfu29z">
           <text>"Appetizers"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_18gumaa">
+          <text>"Vegetarian" or "Calorie-Conscious"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nn1n92">
+          <text>"Gluten"</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1nff22v">
           <text>"Caprese"</text>
         </outputEntry>
@@ -30,6 +58,12 @@
       <rule id="DecisionRule_1690rhk">
         <inputEntry id="UnaryTests_1who6ek">
           <text>"Main Dishes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ymfk98">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01xqfr9">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06u2aww">
           <text>"Spaghetti alla Carbonara"</text>
@@ -39,6 +73,12 @@
         <inputEntry id="UnaryTests_1r444ry">
           <text>"Main Dishes"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0g96j1d">
+          <text>"Vegetarian" or "Calorie-Conscious"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12z7rgu">
+          <text>"Gluten" or "Lactose"</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_13lwc39">
           <text>"Risotto ai Funghi"</text>
         </outputEntry>
@@ -46,6 +86,12 @@
       <rule id="DecisionRule_0vzdt2k">
         <inputEntry id="UnaryTests_1epkrv4">
           <text>"Main Dishes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ew1yub">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ndcj4v">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_19pobcj">
           <text>"Lasagna alla Bolognese"</text>
@@ -55,6 +101,12 @@
         <inputEntry id="UnaryTests_0kaqu51">
           <text>"Main Dishes"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1e6oslq">
+          <text>"Vegetarian" or "Calorie-Conscious"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gs8s19">
+          <text>"Lactose"</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0bovjz3">
           <text>"Penne all'Arrabbiata"</text>
         </outputEntry>
@@ -62,6 +114,12 @@
       <rule id="DecisionRule_1idhbr6">
         <inputEntry id="UnaryTests_1rnul29">
           <text>"Second Course"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g73ef2">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iy4m69">
+          <text>"Gluten" or "Lactose"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_11l9ke8">
           <text>"Bistecca alla Fiorentina"  </text>
@@ -71,6 +129,12 @@
         <inputEntry id="UnaryTests_1ou1i9i">
           <text>"Second Course"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0lthi2f">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05lu7fg">
+          <text>"Gluten" or "Lactose"</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_15ulfk9">
           <text>"Pollo alla Cacciatora"</text>
         </outputEntry>
@@ -78,6 +142,12 @@
       <rule id="DecisionRule_0tyxs72">
         <inputEntry id="UnaryTests_1q95jpn">
           <text>"Second Course"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uoqp83">
+          <text>"Vegetarian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17fbd67">
+          <text>"Gluten"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0dsw6fl">
           <text>"Melanzane alla Parmigiana"</text>
@@ -87,6 +157,12 @@
         <inputEntry id="UnaryTests_02j8oao">
           <text>"Pizza"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0kukm22">
+          <text>"Vegetarian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q03e3w">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1xrc2ls">
           <text>"Margherita"  </text>
         </outputEntry>
@@ -94,6 +170,12 @@
       <rule id="DecisionRule_16edd2e">
         <inputEntry id="UnaryTests_1fwxiy6">
           <text>"Pizza"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j0ds91">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n6h1ty">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0yz8eu8">
           <text>"Diavola" </text>
@@ -103,6 +185,12 @@
         <inputEntry id="UnaryTests_15wi9d4">
           <text>"Pizza"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1ri33bv">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gsxgec">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ggccab">
           <text>"Prosciutto e Funghi"</text>
         </outputEntry>
@@ -110,6 +198,12 @@
       <rule id="DecisionRule_0992g6b">
         <inputEntry id="UnaryTests_1sfdbyo">
           <text>"Pizza"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dti4e5">
+          <text>or "Calorie-Conscious"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zfdiid">
+          <text>"Lactose"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0i61dba">
           <text>"Fornarina"</text>
@@ -119,6 +213,12 @@
         <inputEntry id="UnaryTests_0qaypr9">
           <text>"Dessert"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_05m47dp">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bor6n1">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0w87813">
           <text>"Tiramisù"  </text>
         </outputEntry>
@@ -127,6 +227,12 @@
         <inputEntry id="UnaryTests_0eckow7">
           <text>"Dessert"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1xdfkgr">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15zxzhb">
+          <text>"Gluten" </text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0h8zjdp">
           <text>"Panna Cotta"</text>
         </outputEntry>
@@ -134,6 +240,12 @@
       <rule id="DecisionRule_0kmd964">
         <inputEntry id="UnaryTests_17pjv8k">
           <text>"Dessert"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10q9wqs">
+          <text>"Carnivore"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fagnft">
+          <text>"Lactose"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h0xbem">
           <text>"Cantucci"</text>
@@ -173,7 +285,7 @@
       <requiredDecision href="#Decision_0rsapab" />
     </informationRequirement>
     <decisionTable id="DecisionTable_1k6tkhc">
-      <input id="InputClause_0w4732s" label="Meal by Course">
+      <input id="InputClause_0w4732s" label="Filtered Meals">
         <inputExpression id="LiteralExpression_0gfacel" typeRef="string" />
       </input>
       <input id="InputClause_1lvd26m" label="Meal Informations">
@@ -184,35 +296,102 @@
       <output id="OutputClause_1y91w8o" typeRef="string" />
     </decisionTable>
   </decision>
+  <inputData id="InputData_0k61hf9" name="Guest Profile" />
+  <inputData id="InputData_1mt6uq3" name="Allergy" />
+  <textAnnotation id="TextAnnotation_0xh9nbg">
+    <text>Carnivore, 
+Vegetarian,
+Calorie-conscious</text>
+  </textAnnotation>
+  <association id="Association_0z2z2dy">
+    <sourceRef href="#TextAnnotation_0xh9nbg" />
+    <targetRef href="#InputData_0k61hf9" />
+  </association>
+  <textAnnotation id="TextAnnotation_11be4ga">
+    <text>Appetizers,
+Main Disches,
+Second Course,
+Pizza,
+Dessert</text>
+  </textAnnotation>
+  <association id="Association_1vtk0bi">
+    <sourceRef href="#TextAnnotation_11be4ga" />
+    <targetRef href="#InputData_169tsmv" />
+  </association>
+  <textAnnotation id="TextAnnotation_1dszokt">
+    <text>Lactose,
+Gluten</text>
+  </textAnnotation>
+  <association id="Association_1bmhstm">
+    <sourceRef href="#TextAnnotation_1dszokt" />
+    <targetRef href="#InputData_1mt6uq3" />
+  </association>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <dmndi:DMNShape dmnElementRef="Decision_1upfn7f">
-        <dc:Bounds height="80" width="180" x="160" y="180" />
+        <dc:Bounds height="80" width="180" x="340" y="310" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_0eh82yu" dmnElementRef="InputData_169tsmv">
-        <dc:Bounds height="45" width="125" x="187" y="78" />
+        <dc:Bounds height="45" width="125" x="367" y="208" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0d6be4k" dmnElementRef="InformationRequirement_1dex354">
-        <di:waypoint x="250" y="123" />
-        <di:waypoint x="250" y="160" />
-        <di:waypoint x="250" y="180" />
+        <di:waypoint x="430" y="253" />
+        <di:waypoint x="430" y="290" />
+        <di:waypoint x="430" y="310" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0inuzmv" dmnElementRef="Decision_0rsapab">
-        <dc:Bounds height="80" width="180" x="430" y="310" />
+        <dc:Bounds height="80" width="180" x="610" y="440" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_01bywnp" dmnElementRef="InformationRequirement_13d58td">
-        <di:waypoint x="250" y="260" />
-        <di:waypoint x="250" y="290" />
-        <di:waypoint x="250" y="310" />
+        <di:waypoint x="430" y="390" />
+        <di:waypoint x="430" y="420" />
+        <di:waypoint x="430" y="440" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_06p5j9z" dmnElementRef="InformationRequirement_0y8j0f6">
-        <di:waypoint x="430" y="350" />
-        <di:waypoint x="360" y="350" />
-        <di:waypoint x="340" y="350" />
+        <di:waypoint x="610" y="480" />
+        <di:waypoint x="540" y="480" />
+        <di:waypoint x="520" y="480" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1dmh6ah" dmnElementRef="Decision_0y73h7y">
-        <dc:Bounds height="80" width="180" x="160" y="310" />
+        <dc:Bounds height="80" width="180" x="340" y="440" />
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_16vhd0o" dmnElementRef="InputData_0k61hf9">
+        <dc:Bounds height="45" width="125" x="157" y="327" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_18l4r64" dmnElementRef="TextAnnotation_0xh9nbg">
+        <dc:Bounds height="57" width="120" x="160" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ljikr1" dmnElementRef="Association_0z2z2dy">
+        <di:waypoint x="220" y="279" />
+        <di:waypoint x="220" y="327" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0qsbzot" dmnElementRef="InformationRequirement_0qwnoev">
+        <di:waypoint x="282" y="350" />
+        <di:waypoint x="320" y="350" />
+        <di:waypoint x="340" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0fu1ziy" dmnElementRef="TextAnnotation_11be4ga">
+        <dc:Bounds height="80" width="100" x="380" y="78" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0zxzqsp" dmnElementRef="Association_1vtk0bi">
+        <di:waypoint x="430" y="158" />
+        <di:waypoint x="430" y="208" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1fazy45" dmnElementRef="InputData_1mt6uq3">
+        <dc:Bounds height="45" width="125" x="577" y="327" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1tb14b3" dmnElementRef="InformationRequirement_166tb1w">
+        <di:waypoint x="577" y="350" />
+        <di:waypoint x="540" y="350" />
+        <di:waypoint x="520" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1j0g2t1" dmnElementRef="TextAnnotation_1dszokt">
+        <dc:Bounds height="43" width="100" x="590" y="258" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15mnxb9" dmnElementRef="Association_1bmhstm">
+        <di:waypoint x="640" y="301" />
+        <di:waypoint x="640" y="327" />
+      </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </definitions>
