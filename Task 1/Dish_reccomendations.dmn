@@ -13,20 +13,29 @@
     <decisionTable id="DecisionTable_0u4y6tx" hitPolicy="COLLECT">
       <input id="Input_1" label="Course">
         <inputExpression id="InputExpression_1" typeRef="string">
-          <text></text>
+          <text>Course</text>
         </inputExpression>
+        <inputValues id="UnaryTests_1gonrqz">
+          <text>"Appetizers","Main Dishes","Second Course","Pizza","Dessert"</text>
+        </inputValues>
       </input>
       <input id="InputClause_1h7s2e2" label="Guest Profile">
         <inputExpression id="LiteralExpression_00o0kc8" typeRef="string">
-          <text></text>
+          <text>GuestProfile</text>
         </inputExpression>
+        <inputValues id="UnaryTests_1exd2hh">
+          <text>"Carnivore","Omnivore","Vegetarian"</text>
+        </inputValues>
       </input>
       <input id="InputClause_04pz4ud" label="Allergy">
         <inputExpression id="LiteralExpression_1nkex8v" typeRef="string">
-          <text></text>
+          <text>Allergy</text>
         </inputExpression>
+        <inputValues id="UnaryTests_1pjku77">
+          <text>"Lactose","Gluten","None"</text>
+        </inputValues>
       </input>
-      <output id="Output_1" typeRef="string" />
+      <output id="Output_1" label="Meals" name="Meals" typeRef="string" />
       <rule id="DecisionRule_0zgp5ao">
         <inputEntry id="UnaryTests_0b127u5">
           <text>"Appetizers"</text>
@@ -268,11 +277,11 @@
     </decisionTable>
   </decision>
   <inputData id="InputData_169tsmv" name="Course" />
-  <decision id="Decision_0rsapab" name="Meal Informations">
-    <variable id="InformationItem_0gl5eao" name="" typeRef="string" />
+  <decision id="Decision_0rsapab" name="Meal_Informations">
+    <variable id="InformationItem_0gl5eao" name="MealsInfo" typeRef="string" />
     <literalExpression id="LiteralExpression_0ipmmwp">
       <text>[
-  {"name": "Bruschette al Pomodoro", "calories": 180, "isVegetarian": true},
+  {"name": "Bruschette al Pomodoro", "calories": 180},
   {"name": "Caprese", "calories": 250},
   {"name": "Spaghetti alla Carbonara", "calories": 565},
   {"name": "Risotto ai Funghi", "calories": 450},
@@ -302,33 +311,148 @@
     <informationRequirement id="InformationRequirement_0lyov5k">
       <requiredInput href="#InputData_0j5zxcq" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_1jecxvj">
+      <requiredInput href="#InputData_1mz0exm" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_1k6tkhc" hitPolicy="COLLECT">
-      <input id="InputClause_0w4732s" label="Filtered Meals">
-        <inputExpression id="LiteralExpression_0gfacel" typeRef="string" />
+      <input id="InputClause_0w4732s" label="Filtered Meals" biodi:width="312">
+        <inputExpression id="LiteralExpression_0gfacel" typeRef="list" />
       </input>
-      <input id="InputClause_1lvd26m" label="Is Calorie-conscious" biodi:width="202.00001525878906">
-        <inputExpression id="LiteralExpression_02s9uob" typeRef="string">
+      <input id="InputClause_1lvd26m" label="Is Calorie-conscious" biodi:width="150">
+        <inputExpression id="LiteralExpression_02s9uob" typeRef="boolean">
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_0tscixv" label="Meal Informations">
-        <inputExpression id="LiteralExpression_15vyk52" typeRef="string">
-          <text></text>
+      <input id="InputClause_0tscixv" label="Meal_Informations" biodi:width="350.0000305175781">
+        <inputExpression id="LiteralExpression_15vyk52" typeRef="list">
+          <text>Meal_Information</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_1y91w8o" typeRef="string" />
+      <output id="OutputClause_1y91w8o" typeRef="string" biodi:width="278.00001525878906" />
       <rule id="DecisionRule_1e2dast">
         <inputEntry id="UnaryTests_0t1gq7g">
-          <text>"Bruschette al Pomodoro"</text>
+          <text>list contains(Filtered Meals, "Bruschette al Pomodoro")</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ywiahq">
-          <text></text>
+          <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0grwifw">
-          <text></text>
+          <text>Meal_Information[name="Bruschette al Pomodoro"].calories[1] &lt; Max Calories</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1h6y6d1">
+          <text>"Bruschette al Pomodoro"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_092izo9">
+        <inputEntry id="UnaryTests_1pj6mfu">
+          <text>list contains(Filtered Meals, "Caprese")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zvry6t">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_119tnur">
+          <text>Meal_Information[name="Caprese"].calories[1] &lt; Max Calories</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fin77i">
+          <text>"Caprese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w1gjue">
+        <inputEntry id="UnaryTests_0nvbeyi">
+          <text>list contains(Filtered Meals, "Spaghetti alla Carbonara")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qohj8i">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bxq1xg">
+          <text>Meal_Information[name="Spaghetti alla Carbonara"].calories[1] &lt; Max Calories</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_042t1xh">
+          <text>"Spaghetti alla Carbonara"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j736ue">
+        <inputEntry id="UnaryTests_1gcj14v">
+          <text>list contains(Filtered Meals, "Risotto ai Funghi")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mgqqxg">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oatt9p">
+          <text>Meal_Information[name="Risotto ai Funghi"].calories[1] &lt; Max Calories</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02o0giw">
+          <text>"Risotto ai Funghi"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03cogac">
+        <inputEntry id="UnaryTests_0px7tx5">
+          <text>list contains(Filtered Meals, "Lasagna alla Bolognese")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1om3ojx">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x1p6he">
+          <text>Meal_Information[name="Lasagna alla Bolognese"].calories[1] &lt; Max Calories</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09epwoz">
+          <text>"Lasagna alla Bolognese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00tvmbf">
+        <inputEntry id="UnaryTests_0rvmhko">
+          <text>list contains(Filtered Meals, "Penne all'Arrabbiata")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_100x8ym">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08snjvb">
+          <text>Meal_Information[name="Penne all'Arrabbiata"].calories[1] &lt; Max Calories</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15b3fsh">
+          <text>"Penne all'Arrabbiata"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dl5cci">
+        <inputEntry id="UnaryTests_0bvnbeg">
           <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_160uthr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ai379g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dcbgiv">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y5bdjk">
+        <inputEntry id="UnaryTests_07sn9qu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e9t95a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08rz0gr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03cpwsy">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r0vly5">
+        <inputEntry id="UnaryTests_0if5u82">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ouanvd">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1edhnsb">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qitlm9">
+          <text>Filtered Meals</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -336,6 +460,7 @@
   <inputData id="InputData_0k61hf9" name="Guest Profile" />
   <inputData id="InputData_1mt6uq3" name="Allergy" />
   <inputData id="InputData_0j5zxcq" name="Is Calorie-conscious" />
+  <inputData id="InputData_1mz0exm" name="Max Calories" />
   <textAnnotation id="TextAnnotation_0xh9nbg">
     <text>Carnivore, 
 Vegetarian,
@@ -466,6 +591,14 @@ None</text>
       <dmndi:DMNEdge id="DMNEdge_0apkutf" dmnElementRef="Association_170v410">
         <di:waypoint x="700" y="560" />
         <di:waypoint x="700" y="520" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1qzm8hs" dmnElementRef="InputData_1mz0exm">
+        <dc:Bounds height="45" width="125" x="368" y="573" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_08od8vf" dmnElementRef="InformationRequirement_1jecxvj">
+        <di:waypoint x="431" y="573" />
+        <di:waypoint x="430" y="540" />
+        <di:waypoint x="430" y="520" />
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
