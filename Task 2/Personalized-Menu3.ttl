@@ -1,0 +1,1095 @@
+@prefix : <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#> .
+@prefix ex: <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#> .
+
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#hasAllergy
+:hasAllergy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Guest ;
+            rdfs:range :Dairy ,
+                       :Eggs ,
+                       :Gluten ,
+                       :GlutenFree ,
+                       :Meat ,
+                       :None ,
+                       :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#hasDiet
+:hasDiet rdf:type owl:ObjectProperty ;
+         rdfs:domain :Guest ;
+         rdfs:range :Diet .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               rdfs:domain :Meal ;
+               rdfs:range :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#hasSuitableMeal
+:hasSuitableMeal rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Guest ;
+                 rdfs:range :Meal .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#hasCalories
+:hasCalories rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Meal ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#hasCourse
+:hasCourse rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Meal ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#isCalorieConscious
+:isCalorieConscious rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Guest ;
+                    rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#isVegan
+:isVegan rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Meal ;
+         rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#notContainsGluten
+:notContainsGluten rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Meal ;
+                   rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#CalorieConsciousMeal
+:CalorieConsciousMeal rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :hasCalories ;
+                                                                   owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                        owl:onDatatype xsd:integer ;
+                                                                                        owl:withRestrictions ( [ xsd:maxExclusive 500
+                                                                                                               ]
+                                                                                                             )
+                                                                                      ]
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf :Meal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Dairy
+:Dairy rdf:type owl:Class ;
+       rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Diet
+:Diet rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Eggs
+:Eggs rdf:type owl:Class ;
+      rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GFCalMeal
+:GFCalMeal rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :GlutenFreeMeal
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasCalories ;
+                                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                             owl:onDatatype xsd:integer ;
+                                                                             owl:withRestrictions ( [ xsd:maxExclusive 500
+                                                                                                    ]
+                                                                                                  )
+                                                                           ]
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :GlutenFreeMeal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GFCalVeg
+:GFCalVeg rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :GlutenFreeMeal
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasCalories ;
+                                                       owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                            owl:onDatatype xsd:integer ;
+                                                                            owl:withRestrictions ( [ xsd:maxExclusive 500
+                                                                                                   ]
+                                                                                                 )
+                                                                          ]
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :isVegan ;
+                                                       owl:hasValue "true"^^xsd:boolean
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf :GlutenFreeMeal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GFVegMeal
+:GFVegMeal rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :GlutenFreeMeal
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :isVegan ;
+                                                        owl:hasValue "true"^^xsd:boolean
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :GlutenFreeMeal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Gluten
+:Gluten rdf:type owl:Class ;
+        rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GlutenFree
+:GlutenFree rdf:type owl:Class ;
+            rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GlutenFreeMeal
+:GlutenFreeMeal rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :notContainsGluten ;
+                                                             owl:hasValue "true"^^xsd:boolean
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf :Meal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Guest
+:Guest rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Ingredient
+:Ingredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Meal
+:Meal rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Meat
+:Meat rdf:type owl:Class ;
+      rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#None
+:None rdf:type owl:Class ;
+      rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#VegCalMeal
+:VegCalMeal rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :VeganMeal
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasCalories ;
+                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                              owl:onDatatype xsd:integer ;
+                                                                              owl:withRestrictions ( [ xsd:maxExclusive 500
+                                                                                                     ]
+                                                                                                   )
+                                                                            ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf :VeganMeal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#VeganMeal
+:VeganMeal rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :isVegan ;
+                                                        owl:hasValue "true"^^xsd:boolean
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :Meal .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Vegetable
+:Vegetable rdf:type owl:Class ;
+           rdfs:subClassOf :Ingredient .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Biscotti
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Biscotti> rdf:type owl:NamedIndividual ,
+                                                             :Meal ;
+                                                    :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#sugar> ,
+                                                                   <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat> ;
+                                                    :hasCalories 125 ;
+                                                    :hasCourse "Dessert" ;
+                                                    :isVegan "true"^^xsd:boolean ;
+                                                    :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#BisteccaAllaFiorentina
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#BisteccaAllaFiorentina> rdf:type owl:NamedIndividual ,
+                                                                           :Meal ;
+                                                                  :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> ;
+                                                                  :hasCalories 655 ;
+                                                                  :hasCourse "Second Course" ;
+                                                                  :isVegan "false"^^xsd:boolean ;
+                                                                  :notContainsGluten "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#BruschetteAlPomodoro
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#BruschetteAlPomodoro> rdf:type owl:NamedIndividual ,
+                                                                         :Meal ;
+                                                                :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#bread> ,
+                                                                               <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ;
+                                                                :hasCalories 180 ;
+                                                                :hasCourse "Appetizers" ;
+                                                                :isVegan "true"^^xsd:boolean ;
+                                                                :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Caprese
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Caprese> rdf:type owl:NamedIndividual ,
+                                                            :Meal ;
+                                                   :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#chees> ,
+                                                                  <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ;
+                                                   :hasCalories 250 ;
+                                                   :hasCourse "Appetizers" ;
+                                                   :isVegan "false"^^xsd:boolean ;
+                                                   :notContainsGluten "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Diavola
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Diavola> rdf:type owl:NamedIndividual ,
+                                                            :Meal ;
+                                                   :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> ,
+                                                                  <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ,
+                                                                  <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat> ;
+                                                   :hasCalories 650 ;
+                                                   :hasCourse "Pizza" ;
+                                                   :isVegan "false"^^xsd:boolean ;
+                                                   :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Fornarina
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Fornarina> rdf:type owl:NamedIndividual ,
+                                                              :Meal ;
+                                                     :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat> ;
+                                                     :hasCalories 250 ;
+                                                     :hasCourse "Pizza" ;
+                                                     :isVegan "true"^^xsd:boolean ;
+                                                     :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GlutenFreeMargherita
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#GlutenFreeMargherita> rdf:type owl:NamedIndividual ,
+                                                                         :Meal ;
+                                                                :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#chees> ,
+                                                                               <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ;
+                                                                :hasCalories 850 ;
+                                                                :hasCourse "Pizza" ;
+                                                                :isVegan "false"^^xsd:boolean ;
+                                                                :notContainsGluten "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#LasagnaAllaBolognese
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#LasagnaAllaBolognese> rdf:type owl:NamedIndividual ,
+                                                                         :Meal ;
+                                                                :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> ;
+                                                                :hasCalories 750 ;
+                                                                :hasCourse "Main Dishes" ;
+                                                                :isVegan "false"^^xsd:boolean ;
+                                                                :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Margherita
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Margherita> rdf:type owl:NamedIndividual ,
+                                                               :Meal ;
+                                                      :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ,
+                                                                     <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat> ;
+                                                      :hasCalories 600 ;
+                                                      :hasCourse "Pizza" ;
+                                                      :isVegan "true"^^xsd:boolean ;
+                                                      :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#MelanzaneAllaParmigiana
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#MelanzaneAllaParmigiana> rdf:type owl:NamedIndividual ,
+                                                                            :Meal ;
+                                                                   :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#chees> ,
+                                                                                  <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#eggplants> ;
+                                                                   :hasCalories 550 ;
+                                                                   :hasCourse "Second Course" ;
+                                                                   :isVegan "false"^^xsd:boolean ;
+                                                                   :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#PannaCotta
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#PannaCotta> rdf:type owl:NamedIndividual ,
+                                                               :Meal ;
+                                                      :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#milk> ;
+                                                      :hasCalories 250 ;
+                                                      :hasCourse "Dessert" ;
+                                                      :isVegan "false"^^xsd:boolean ;
+                                                      :notContainsGluten "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#PenneAllArrabbiata
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#PenneAllArrabbiata> rdf:type owl:NamedIndividual ,
+                                                                       :Meal ;
+                                                              :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#oil> ,
+                                                                             <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ;
+                                                              :hasCalories 325 ;
+                                                              :hasCourse "Main Dishes" ;
+                                                              :isVegan "true"^^xsd:boolean ;
+                                                              :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#PolloAllaCacciatora
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#PolloAllaCacciatora> rdf:type owl:NamedIndividual ,
+                                                                        :Meal ;
+                                                               :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> ;
+                                                               :hasCalories 570 ;
+                                                               :hasCourse "Second Course" ;
+                                                               :isVegan "false"^^xsd:boolean ;
+                                                               :notContainsGluten "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#ProsciuttoEFunghi
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#ProsciuttoEFunghi> rdf:type owl:NamedIndividual ,
+                                                                      :Meal ;
+                                                             :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> ,
+                                                                            <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mushrooms> ,
+                                                                            <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> ,
+                                                                            <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat> ;
+                                                             :hasCalories 700 ;
+                                                             :hasCourse "Pizza" ;
+                                                             :isVegan "false"^^xsd:boolean ;
+                                                             :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#RisottoAiFunghi
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#RisottoAiFunghi> rdf:type owl:NamedIndividual ,
+                                                                    :Meal ;
+                                                           :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mushroom> ,
+                                                                          <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#rice> ;
+                                                           :hasCalories 450 ;
+                                                           :hasCourse "Main Dishes" ;
+                                                           :isVegan "true"^^xsd:boolean ;
+                                                           :notContainsGluten "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#SpaghettiAllaCarbonara
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#SpaghettiAllaCarbonara> rdf:type owl:NamedIndividual ,
+                                                                           :Meal ;
+                                                                  :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#eggs> ,
+                                                                                 <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> ,
+                                                                                 <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#oil> ;
+                                                                  :hasCalories 565 ;
+                                                                  :hasCourse "Main Dishes" ;
+                                                                  :isVegan "false"^^xsd:boolean ;
+                                                                  :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Tiramisu
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Tiramisu> rdf:type owl:NamedIndividual ,
+                                                             :Meal ;
+                                                    :hasIngredient <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#chees> ,
+                                                                   <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#sugar> ;
+                                                    :hasCalories 450 ;
+                                                    :hasCourse "Dessert" ;
+                                                    :isVegan "false"^^xsd:boolean ;
+                                                    :notContainsGluten "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#asparagi
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#asparagi> rdf:type owl:NamedIndividual ,
+                                                             :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#bread
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#bread> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#burro
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#burro> rdf:type owl:NamedIndividual ,
+                                                          :Dairy .
+
+
+### http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#carne
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#carne> rdf:type owl:NamedIndividual ,
+                                                          :Meat .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#carote
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#carote> rdf:type owl:NamedIndividual ,
+                                                           :Vegetable .
+
+
+### http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#chees
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#chees> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#cipolla
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#cipolla> rdf:type owl:NamedIndividual ,
+                                                            :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#crackers
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#crackers> rdf:type owl:NamedIndividual ,
+                                                             :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#eggplants
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#eggplants> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#eggs
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#eggs> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#farina
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#farina> rdf:type owl:NamedIndividual ,
+                                                           :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#fette_biscottate
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#fette_biscottate> rdf:type owl:NamedIndividual ,
+                                                                     :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#formaggio
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#formaggio> rdf:type owl:NamedIndividual ,
+                                                              :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#funghi
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#funghi> rdf:type owl:NamedIndividual ,
+                                                           :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#insalata
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#insalata> rdf:type owl:NamedIndividual ,
+                                                             :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#lasagna
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#lasagna> rdf:type owl:NamedIndividual ,
+                                                            :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#latte
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#latte> rdf:type owl:NamedIndividual ,
+                                                          :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#macinato
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#macinato> rdf:type owl:NamedIndividual ,
+                                                             :Meat .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mais
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mais> rdf:type owl:NamedIndividual ,
+                                                         :GlutenFree .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#meat> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#melanzane
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#melanzane> rdf:type owl:NamedIndividual ,
+                                                              :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#milk
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#milk> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mozzarella
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mozzarella> rdf:type owl:NamedIndividual ,
+                                                               :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mushroom
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mushroom> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mushrooms
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#mushrooms> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#oil
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#oil> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#olive
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#olive> rdf:type owl:NamedIndividual ,
+                                                          :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pane
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pane> rdf:type owl:NamedIndividual ,
+                                                         :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#panino
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#panino> rdf:type owl:NamedIndividual ,
+                                                           :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#panna
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#panna> rdf:type owl:NamedIndividual ,
+                                                          :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#parmigiano
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#parmigiano> rdf:type owl:NamedIndividual ,
+                                                               :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pasta
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pasta> rdf:type owl:NamedIndividual ,
+                                                          :Gluten .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#patate
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#patate> rdf:type owl:NamedIndividual ,
+                                                           :GlutenFree .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#peperoni
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#peperoni> rdf:type owl:NamedIndividual ,
+                                                             :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#piselli
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#piselli> rdf:type owl:NamedIndividual ,
+                                                            :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#polenta
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#polenta> rdf:type owl:NamedIndividual ,
+                                                            :GlutenFree .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pollo
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pollo> rdf:type owl:NamedIndividual ,
+                                                          :Meat .
+
+
+### http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pomodori
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#pomodori> rdf:type owl:NamedIndividual ,
+                                                             :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#prosciutto
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#prosciutto> rdf:type owl:NamedIndividual ,
+                                                               :Meat .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#radicchio
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#radicchio> rdf:type owl:NamedIndividual ,
+                                                              :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#rice
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#rice> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#ricotta
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#ricotta> rdf:type owl:NamedIndividual ,
+                                                            :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#riso
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#riso> rdf:type owl:NamedIndividual ,
+                                                         :GlutenFree .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#salame
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#salame> rdf:type owl:NamedIndividual ,
+                                                           :Meat .
+
+
+### http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#salsiccia
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#salsiccia> rdf:type owl:NamedIndividual ,
+                                                              :Meat .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#speck
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#speck> rdf:type owl:NamedIndividual ,
+                                                          :Meat .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#spinaci
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#spinaci> rdf:type owl:NamedIndividual ,
+                                                            :Vegetable .
+
+
+### http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#sugar
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#sugar> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#tomato> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#uova
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#uova> rdf:type owl:NamedIndividual ,
+                                                         :Eggs .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#uovo
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#uovo> rdf:type owl:NamedIndividual ,
+                                                         :Eggs .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#wheat> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#yogurt
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#yogurt> rdf:type owl:NamedIndividual ,
+                                                           :Dairy .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#zucca
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#zucca> rdf:type owl:NamedIndividual ,
+                                                          :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#zucchine
+<http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#zucchine> rdf:type owl:NamedIndividual ,
+                                                             :Vegetable .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Chiara
+:Chiara rdf:type owl:NamedIndividual ,
+                 :Guest ;
+        :hasAllergy :None ;
+        :hasDiet :Omnivore ;
+        :isCalorieConscious "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Elisa
+:Elisa rdf:type owl:NamedIndividual ,
+                :Guest ;
+       :hasAllergy :gluten ;
+       :hasDiet :Omnivore ;
+       :isCalorieConscious "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Giulia
+:Giulia rdf:type owl:NamedIndividual ,
+                 :Guest ;
+        :hasAllergy :None ;
+        :hasDiet :Vegan ;
+        :isCalorieConscious "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Luca
+:Luca rdf:type owl:NamedIndividual ,
+               :Guest ;
+      :hasAllergy :gluten ;
+      :hasDiet :Vegan ;
+      :isCalorieConscious "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Marco
+:Marco rdf:type owl:NamedIndividual ,
+                :Guest ;
+       :hasAllergy :None ;
+       :hasDiet :Omnivore ;
+       :isCalorieConscious "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Mario
+:Mario rdf:type owl:NamedIndividual ,
+                :Guest ;
+       :hasAllergy :gluten ;
+       :hasDiet :Vegan ;
+       :isCalorieConscious "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#None
+:None rdf:type owl:NamedIndividual ,
+               :None .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Omnivore
+:Omnivore rdf:type owl:NamedIndividual ,
+                   :Diet .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Paolo
+:Paolo rdf:type owl:NamedIndividual ,
+                :Guest ;
+       :hasAllergy :gluten ;
+       :hasDiet :Omnivore ;
+       :isCalorieConscious "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Sara
+:Sara rdf:type owl:NamedIndividual ,
+               :Guest ;
+      :hasAllergy :None ;
+      :hasDiet :Vegan ;
+      :isCalorieConscious "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Vegan
+:Vegan rdf:type owl:NamedIndividual ,
+                :Diet .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#Vegetarian
+:Vegetarian rdf:type owl:NamedIndividual ,
+                     :Diet .
+
+
+###  http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#gluten
+:gluten rdf:type owl:NamedIndividual ,
+                 :Gluten .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+ex:g rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ex:m rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "VeganOnlyRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :VeganMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:m
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :None
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDiet ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :Vegan
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :isCalorieConscious ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> "false"^^xsd:boolean
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> :Guest ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ex:g
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSuitableMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ex:m
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "OnlyCalorieConsciousRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :None
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :isCalorieConscious ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> :CalorieConsciousMeal ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ex:m
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDiet ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :Omnivore
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> :Guest ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ex:g
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSuitableMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ex:m
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "RestrictedDiet" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :isCalorieConscious ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDiet ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :Vegan
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :gluten
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#classPredicate> :GFCalVeg ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ex:m
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> :Guest ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ex:g
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSuitableMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ex:m
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "GFOnlyRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :GlutenFreeMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:m
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :gluten
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :isCalorieConscious ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> "false"^^xsd:boolean
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDiet ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :Omnivore
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> :Guest ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ex:g
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSuitableMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ex:m
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "OmnivoreRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :None
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Meal ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ex:m
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :isCalorieConscious ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> "false"^^xsd:boolean
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDiet ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :Omnivore
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> :Guest ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ex:g
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSuitableMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ex:m
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "VegCalRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :None
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :isCalorieConscious ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDiet ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :Vegan
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#classPredicate> :VegCalMeal ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ex:m
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> :Guest ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ex:g
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSuitableMeal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ex:g ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ex:m
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

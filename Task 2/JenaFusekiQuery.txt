@@ -1,0 +1,55 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mod: <http://fhnw.ch/modelingEnvironment/ModelOntology#>
+PREFIX lo: <http://fhnw.ch/modelingEnvironment/LanguageOntology#>
+PREFIX per: <http://www.semanticweb.org/angel/ontologies/2025/5/personalized-menu#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT (STRAFTER(STR(?meal), "#") AS ?mealName)
+WHERE {
+  mod:RecommendMeals_4d13746c-0df8-47d3-a84b-5e069cc75b10 lo:hasCoursepreference ?course .
+  mod:RecommendMeals_4d13746c-0df8-47d3-a84b-5e069cc75b10 lo:hasAllergy ?allergy .
+  mod:RecommendMeals_4d13746c-0df8-47d3-a84b-5e069cc75b10 lo:hasDiet ?diet .
+  mod:RecommendMeals_4d13746c-0df8-47d3-a84b-5e069cc75b10 lo:isCalorieConscious ?isCalorieConscious .
+  mod:RecommendMeals_4d13746c-0df8-47d3-a84b-5e069cc75b10 lo:maxCalorieIntake ?maxCalories .
+
+  ?meal rdf:type per:Meal ;
+        per:hasCourse ?course .
+
+  OPTIONAL { ?meal per:hasIngredient ?ingredient . }
+  OPTIONAL { ?meal per:hasCalories ?mealCalories . }
+  OPTIONAL { ?meal per:isVegan ?isVegan . }
+  OPTIONAL { ?meal per:notContainsGluten ?notContainsGluten . }
+
+  FILTER (
+    !BOUND(?allergy) ||
+    (LCASE(?allergy) != "celery"       || !EXISTS { ?meal per:hasIngredient per:celery }) &&
+    (LCASE(?allergy) != "cereals"      || !EXISTS { ?meal per:hasIngredient per:cereals }) &&
+    (LCASE(?allergy) != "crustaceans"  || !EXISTS { ?meal per:hasIngredient per:crustaceans }) &&
+    (LCASE(?allergy) != "eggs"         || !EXISTS { ?meal per:hasIngredient per:eggs }) &&
+    (LCASE(?allergy) != "fish"         || !EXISTS { ?meal per:hasIngredient per:fish }) &&
+    (LCASE(?allergy) != "lupin"        || !EXISTS { ?meal per:hasIngredient per:lupin }) &&
+    (LCASE(?allergy) != "milk"         || !EXISTS { ?meal per:hasIngredient per:milk }) &&
+    (LCASE(?allergy) != "molluscs"     || !EXISTS { ?meal per:hasIngredient per:molluscs }) &&
+    (LCASE(?allergy) != "mustard"      || !EXISTS { ?meal per:hasIngredient per:mustard }) &&
+    (LCASE(?allergy) != "peanuts"      || !EXISTS { ?meal per:hasIngredient per:peanuts }) &&
+    (LCASE(?allergy) != "sesame"       || !EXISTS { ?meal per:hasIngredient per:sesame }) &&
+    (LCASE(?allergy) != "soybeans"     || !EXISTS { ?meal per:hasIngredient per:soybeans }) &&
+    (LCASE(?allergy) != "sulphites"    || !EXISTS { ?meal per:hasIngredient per:sulphites }) &&
+    (LCASE(?allergy) != "nuts"         || !EXISTS { ?meal per:hasIngredient per:nuts })
+  )
+
+  FILTER (
+    ?isCalorieConscious = false ||
+    (BOUND(?mealCalories) && xsd:decimal(?mealCalories) < xsd:decimal(?maxCalories))
+  )
+
+  FILTER (
+    LCASE(STR(?diet)) != "vegan" || (?isVegan = true)
+  )
+  FILTER (
+    LCASE(STR(?diet)) != "celiac" || (?notContainsGluten = true)
+  )
+  FILTER (
+    LCASE(STR(?diet)) != "carnivore" || EXISTS { ?meal per:hasIngredient per:meat }
+  )
+}
