@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<semantic:definitions xmlns:semantic="https://www.omg.org/spec/DMN/20240513/MODEL/" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:trisodmn="http://www.trisotech.com/2016/triso/dmn" xmlns:feel="https://www.omg.org/spec/DMN/20240513/FEEL/" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:drools="http://www.drools.org/kie/dmn/1.1" xmlns:openapi="https://openapis.org/omg/extension/1.0" xmlns:boxedext="https://www.trisotech.com/spec/DMN/20191111/EXT/" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:rss="http://purl.org/rss/2.0/" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"                 xmlns:sdmn="https://www.omg.org/spec/SDMN/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns="http://www.trisotech.com/definitions/_a18d6529-d371-4e96-96cb-f11f76d12ce2" id="_a18d6529-d371-4e96-96cb-f11f76d12ce2" name="Personalized Menu " namespace="http://www.trisotech.com/definitions/_a18d6529-d371-4e96-96cb-f11f76d12ce2" exporter="Decision Modeler" exporterVersion="9.9.2" xml:lang="en" triso:translationLanguages="" triso:logoChoice="Default">
+    <semantic:extensionElements>
+        <tc:testCases>
+            <tc:testCase id="_e412f380-4fd5-437f-8aa5-1fa546764fc9" name="No Course" type="decisionService" invocableName="Diagram Page 1">
+                <tc:inputNode name="Course">
+                    <tc:value xsi:type="xsd:string"/>
+                </tc:inputNode>
+                <tc:inputNode name="Guest Profile">
+                    <tc:component name="Allergies">
+                        <tc:value xsi:nil="true"/>
+                    </tc:component>
+                    <tc:component name="CalorieConscious">
+                        <tc:value xsi:type="xsd:boolean">false</tc:value>
+                    </tc:component>
+                    <tc:component name="DietPreference">
+                        <tc:value xsi:type="xsd:string">Omnivore</tc:value>
+                    </tc:component>
+                </tc:inputNode>
+                <tc:inputNode name="Meals">
+                    <tc:list>
+                        <tc:item>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">350</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">pasta al pomodoro</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">pizza al prosciutto G/F</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">dough</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">400</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">pasta al pesto G/F</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">basilico</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">550</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">bruschette</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">200</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Appetizers</tc:value>
+                            </tc:component>
+                        </tc:item>
+                    </tc:list>
+                </tc:inputNode>
+                <tc:resultNode id="_d4c0abe7-a596-40d8-bf95-8ab8d0b78711" name="Sort by Course" xsi:type="Sort by Course">
+                    <tc:expected>
+                        <tc:list>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">pasta al pomodoro</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">pizza al prosciutto G/F</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">pasta al pesto G/F</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">bruschette</tc:value>
+                            </tc:item>
+                        </tc:list>
+                    </tc:expected>
+                </tc:resultNode>
+            </tc:testCase>
+            <tc:testCase id="_fd9937de-bfda-4002-8aed-c42a6afe92a1" name="Main Dishes" type="decisionService" invocableName="Diagram Page 1">
+                <tc:inputNode name="Course">
+                    <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                </tc:inputNode>
+                <tc:inputNode name="Guest Profile">
+                    <tc:component name="Allergies">
+                        <tc:value xsi:nil="true"/>
+                    </tc:component>
+                    <tc:component name="CalorieConscious">
+                        <tc:value xsi:type="xsd:boolean">false</tc:value>
+                    </tc:component>
+                    <tc:component name="DietPreference">
+                        <tc:value xsi:type="xsd:string">Omnivore</tc:value>
+                    </tc:component>
+                </tc:inputNode>
+                <tc:inputNode name="Meals">
+                    <tc:list>
+                        <tc:item>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">350</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">pasta al pomodoro</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">pizza al prosciutto G/F</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">dough</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">400</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">pasta al pesto G/F</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">basilico</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">550</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">bruschette</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">200</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Appetizers</tc:value>
+                            </tc:component>
+                        </tc:item>
+                    </tc:list>
+                </tc:inputNode>
+                <tc:resultNode id="_3c97cb0c-1714-47bb-8937-b97b9e07dc20" name="Sort by Course" xsi:type="Sort by Course">
+                    <tc:expected>
+                        <tc:list>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">pasta al pomodoro</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">pasta al pesto G/F</tc:value>
+                            </tc:item>
+                        </tc:list>
+                    </tc:expected>
+                </tc:resultNode>
+            </tc:testCase>
+            <tc:testCase id="_831c094c-8f3a-4685-a5b0-27dc0885a8f7" name="Big Menu Test" type="decisionService" invocableName="Diagram Page 1">
+                <tc:inputNode name="Guest Profile">
+                    <tc:component name="DietPreference">
+                        <tc:value xsi:type="xsd:string">Omnivore</tc:value>
+                    </tc:component>
+                    <tc:component name="Allergies">
+                        <tc:value xsi:nil="true"/>
+                    </tc:component>
+                    <tc:component name="CalorieConscious">
+                        <tc:value xsi:type="xsd:boolean">false</tc:value>
+                    </tc:component>
+                </tc:inputNode>
+                <tc:inputNode name="Meals">
+                    <tc:list>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Bruschette al Pomodoro</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">bread</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">180</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Appetizers</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Caprese</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">chees</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">250</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Appetizers</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Spaghetti alla Carbonara</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggs</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">oil</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggs</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">565</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Risotto ai Funghi</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">rice</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">mushroom</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">celery</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">450</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Lasagna alla Bolognese</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggs</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">celery</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">750</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Penne all'Arrabbiata</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">oil</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">325</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Bistecca alla Fiorentina</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">655</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Second Course</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Pollo alla Cacciatora</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">celery</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">570</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Second Course</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Melanzane alla Parmigiana</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggplants</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">chees</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggs</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">550</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Second Course</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Margherita</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">600</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Diavola</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">650</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Prosciutto e Funghi</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">meat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">mushrooms</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">700</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Fornarina</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">250</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Gluten-free Margherita</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">tomato</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">chees</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">850</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Pizza</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Tiramisù</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">chees</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">sugar</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggs</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">450</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Dessert</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Panna Cotta</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">boh</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">250</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Dessert</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string">Biscotti</tc:value>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">wheat</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">sugar</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">gluten</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">milk</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">eggs</tc:value>
+                                    </tc:item>
+                                    <tc:item>
+                                        <tc:value xsi:type="xsd:string">nuts</tc:value>
+                                    </tc:item>
+                                </tc:list>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:type="xsd:double">125</tc:value>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string">Dessert</tc:value>
+                            </tc:component>
+                        </tc:item>
+                        <tc:item>
+                            <tc:component name="name">
+                                <tc:value xsi:type="xsd:string"/>
+                            </tc:component>
+                            <tc:component name="ingredients">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="allergens">
+                                <tc:list/>
+                            </tc:component>
+                            <tc:component name="calories">
+                                <tc:value xsi:nil="true"/>
+                            </tc:component>
+                            <tc:component name="course">
+                                <tc:value xsi:type="xsd:string"/>
+                            </tc:component>
+                        </tc:item>
+                    </tc:list>
+                </tc:inputNode>
+                <tc:inputNode name="Course">
+                    <tc:value xsi:type="xsd:string">Main Dishes</tc:value>
+                </tc:inputNode>
+                <tc:resultNode id="_c8aa4cf6-d081-457e-964f-38aa6360fc8f" name="Sort by Course" xsi:type="Sort by Course">
+                    <tc:expected>
+                        <tc:list>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">Spaghetti alla Carbonara</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">Risotto ai Funghi</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">Lasagna alla Bolognese</tc:value>
+                            </tc:item>
+                            <tc:item>
+                                <tc:value xsi:type="xsd:string">Penne all'Arrabbiata</tc:value>
+                            </tc:item>
+                        </tc:list>
+                    </tc:expected>
+                </tc:resultNode>
+            </tc:testCase>
+        </tc:testCases>
+    </semantic:extensionElements>
+    <semantic:itemDefinition name="Meal" label="Meal" isCollection="false">
+        <semantic:itemComponent id="_4d4b5e47-0df2-48e9-b233-99677e6929b9" name="name" isCollection="false">
+            <semantic:typeRef>string</semantic:typeRef>
+        </semantic:itemComponent>
+        <semantic:itemComponent id="_8feb5053-7831-47f3-a0c9-f3b8b1d0f7bd" name="ingredients" isCollection="false">
+            <semantic:typeRef>list&lt;string&gt;</semantic:typeRef>
+        </semantic:itemComponent>
+        <semantic:itemComponent id="_5dd0e632-ec2c-43e4-9ffa-b4ffcfd3aea8" name="allergens" isCollection="false">
+            <semantic:typeRef>list&lt;string&gt;</semantic:typeRef>
+        </semantic:itemComponent>
+        <semantic:itemComponent id="_3c2510e2-6be7-494e-9a84-388bad79bb1e" name="calories" isCollection="false">
+            <semantic:typeRef>number</semantic:typeRef>
+        </semantic:itemComponent>
+        <semantic:itemComponent id="_c1128be9-59f7-4303-996a-90250a2e3f11" name="course">
+            <semantic:typeRef>string</semantic:typeRef>
+        </semantic:itemComponent>
+    </semantic:itemDefinition>
+    <semantic:itemDefinition name="GuestProfile" label="GuestProfile" isCollection="false">
+        <semantic:itemComponent id="_de2bb366-4f39-40ba-aea1-92b7dc13f589" name="DietPreference" isCollection="false">
+            <semantic:typeRef>tDietPreference</semantic:typeRef>
+        </semantic:itemComponent>
+        <semantic:itemComponent id="_3e9bdf90-9d02-497f-9d28-1fd04b4f4f70" name="Allergies" isCollection="false">
+            <semantic:typeRef>list&lt;string&gt;</semantic:typeRef>
+        </semantic:itemComponent>
+        <semantic:itemComponent id="_ae39e657-778b-4fbc-8192-0bbb452cbdda" name="CalorieConscious" isCollection="false">
+            <semantic:typeRef>boolean</semantic:typeRef>
+        </semantic:itemComponent>
+    </semantic:itemDefinition>
+    <semantic:itemDefinition name="tCourse" label="tCourse">
+        <semantic:typeRef>string</semantic:typeRef>
+        <semantic:allowedValues triso:allowNull="true">
+            <semantic:extensionElements>
+                <triso:constraintDetails id="_da453684-1215-4363-b03e-ee1ab59f5766" constraintsType="enumeration">
+                    <triso:value>"Appetizers","Main Dishes","Pizza","Second Course","Dessert","Drinks"</triso:value>
+                    <triso:display>"Appetizers", "Main Dishes", "Pizza", "Second Course", "Dessert", "Drinks"</triso:display>
+                    <triso:choices>
+                        <triso:value>"Appetizers"</triso:value>
+                        <triso:display>"Appetizers"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Main Dishes"</triso:value>
+                        <triso:display>"Main Dishes"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Pizza"</triso:value>
+                        <triso:display>"Pizza"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Second Course"</triso:value>
+                        <triso:display>"Second Course"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Dessert"</triso:value>
+                        <triso:display>"Dessert"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Drinks"</triso:value>
+                        <triso:display>"Drinks"</triso:display>
+                    </triso:choices>
+                </triso:constraintDetails>
+            </semantic:extensionElements>
+            <semantic:text>"Appetizers","Main Dishes","Pizza","Second Course","Dessert","Drinks",null</semantic:text>
+        </semantic:allowedValues>
+    </semantic:itemDefinition>
+    <semantic:itemDefinition name="tDietPreference" label="tDietPreference">
+        <semantic:typeRef>string</semantic:typeRef>
+        <semantic:allowedValues>
+            <semantic:extensionElements>
+                <triso:constraintDetails id="_0ee5314a-9dc9-4be6-a8a7-7f0fb2de4236" constraintsType="enumeration">
+                    <triso:value>"Omnivore","Vegetarian","Vegan","Carnivore","Peschetarian"</triso:value>
+                    <triso:display>"Omnivore", "Vegetarian", "Vegan", "Carnivore", "Peschetarian"</triso:display>
+                    <triso:choices>
+                        <triso:value>"Omnivore"</triso:value>
+                        <triso:display>"Omnivore"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Vegetarian"</triso:value>
+                        <triso:display>"Vegetarian"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Vegan"</triso:value>
+                        <triso:display>"Vegan"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Carnivore"</triso:value>
+                        <triso:display>"Carnivore"</triso:display>
+                    </triso:choices>
+                    <triso:choices>
+                        <triso:value>"Peschetarian"</triso:value>
+                        <triso:display>"Peschetarian"</triso:display>
+                    </triso:choices>
+                </triso:constraintDetails>
+            </semantic:extensionElements>
+            <semantic:text>"Omnivore","Vegetarian","Vegan","Carnivore","Peschetarian"</semantic:text>
+        </semantic:allowedValues>
+    </semantic:itemDefinition>
+    <semantic:decisionService id="_a18d6529-d371-4e96-96cb-f11f76d12ce2_DS" name="Whole Model Decision Service" triso:dynamicDecisionService="true" triso:wholeModelService="true">
+        <semantic:variable name="Whole Model Decision Service" id="_a18d6529-d371-4e96-96cb-f11f76d12ce2_DS_VAR" typeRef="Any"/>
+        <semantic:outputDecision href="#_865f0734-73f3-4850-8d55-2fcf7e6dc0f1"/>
+        <semantic:encapsulatedDecision href="#_01f0a2a0-7ad7-40c1-ae93-fba3cd3f42e0"/>
+        <semantic:encapsulatedDecision href="#_ca2fc131-d3a4-4c8e-98f0-8d8e580cf7ce"/>
+        <semantic:encapsulatedDecision href="#_7de829be-d743-41bf-8967-1b3bbf95aa35"/>
+        <semantic:encapsulatedDecision href="#_ffe7ac2a-682c-4e47-b4a2-93ac81d68b75"/>
+        <semantic:inputData href="#_c106993f-f1a6-451b-95b6-32c036649a03"/>
+        <semantic:inputData href="#_b181f1a2-6603-4d9d-9922-f3b991173a7b"/>
+        <semantic:inputData href="#_cff74c48-82df-49cb-adb1-ac0ab0371d13"/>
+    </semantic:decisionService>
+    <semantic:decisionService id="_f11cbcbc-f5f5-48a9-bc4d-a6a98c3d1a07_DS" name="Diagram Page 1" triso:dynamicDecisionService="true">
+        <semantic:variable name="Diagram Page 1" id="_f11cbcbc-f5f5-48a9-bc4d-a6a98c3d1a07_DS_VAR" typeRef="Any"/>
+        <semantic:outputDecision href="#_865f0734-73f3-4850-8d55-2fcf7e6dc0f1"/>
+        <semantic:encapsulatedDecision href="#_01f0a2a0-7ad7-40c1-ae93-fba3cd3f42e0"/>
+        <semantic:encapsulatedDecision href="#_ca2fc131-d3a4-4c8e-98f0-8d8e580cf7ce"/>
+        <semantic:encapsulatedDecision href="#_7de829be-d743-41bf-8967-1b3bbf95aa35"/>
+        <semantic:encapsulatedDecision href="#_ffe7ac2a-682c-4e47-b4a2-93ac81d68b75"/>
+        <semantic:inputData href="#_c106993f-f1a6-451b-95b6-32c036649a03"/>
+        <semantic:inputData href="#_b181f1a2-6603-4d9d-9922-f3b991173a7b"/>
+        <semantic:inputData href="#_cff74c48-82df-49cb-adb1-ac0ab0371d13"/>
+    </semantic:decisionService>
+    <semantic:inputData id="_c106993f-f1a6-451b-95b6-32c036649a03" name="Guest Profile" triso:readOnly="false">
+        <semantic:variable name="Guest Profile" id="_f712d79d-1013-41c1-adc8-cbcc0a7bdb6b" typeRef="GuestProfile"/>
+    </semantic:inputData>
+    <semantic:inputData id="_b181f1a2-6603-4d9d-9922-f3b991173a7b" name="Meals" triso:readOnly="false">
+        <semantic:variable name="Meals" id="_7aac23b3-82aa-411e-9344-da7c63b09c33" typeRef="list&lt;Meal&gt;"/>
+    </semantic:inputData>
+    <semantic:decision id="_01f0a2a0-7ad7-40c1-ae93-fba3cd3f42e0" name="MatchesDiet" triso:readOnly="false" triso:useOutputTypeAsAnswer="false">
+        <semantic:variable name="MatchesDiet" id="_e3cb525b-69a1-411b-a191-39e4ec347c99" typeRef="string"/>
+        <semantic:informationRequirement id="_5fc05067-fd71-493d-b727-b9b873644e36" triso:readOnly="false">
+            <semantic:requiredInput href="#_c106993f-f1a6-451b-95b6-32c036649a03"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_b96fc31e-b7de-4da1-8173-852befafa078" triso:readOnly="false">
+            <semantic:requiredInput href="#_b181f1a2-6603-4d9d-9922-f3b991173a7b"/>
+        </semantic:informationRequirement>
+        <semantic:literalExpression typeRef="string" id="_f8382cc0-5aa7-4a54-97ee-24fa000649a0" triso:expressionId="_cdd7339d-44ca-468e-8737-56d5a94a0343" triso:descriptionVisible="false">
+            <semantic:text>for item in Meals return
+  if  Guest Profile.DietPreference = "Vegan" then
+    if not(list contains(item.ingredients, "meat")) and not(list contains(item.ingredients, "milk")) and not(list contains(item.ingredients, "eggs")) then item.name
+    else null
+  else if Guest Profile.DietPreference = "Vegetarian" then
+    if not(list contains(item.ingredients, "meat")) then item.name
+    else null
+  else if Guest Profile.DietPreference = "Omnivore" then
+    item.name
+  else
+    null</semantic:text>
+        </semantic:literalExpression>
+    </semantic:decision>
+    <semantic:decision id="_ca2fc131-d3a4-4c8e-98f0-8d8e580cf7ce" name="MatchesAllergies" triso:readOnly="false" triso:useOutputTypeAsAnswer="false">
+        <semantic:variable name="MatchesAllergies" id="_fafe0deb-5ab2-44e1-8808-58f6dc644c5c" typeRef="Any"/>
+        <semantic:informationRequirement id="_499773e5-c87e-4558-80bc-53667c03f475" triso:readOnly="false">
+            <semantic:requiredInput href="#_c106993f-f1a6-451b-95b6-32c036649a03"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_409a34eb-dbb9-4f37-b4b6-899da03ef9e6" triso:readOnly="false">
+            <semantic:requiredInput href="#_b181f1a2-6603-4d9d-9922-f3b991173a7b"/>
+        </semantic:informationRequirement>
+        <semantic:literalExpression typeRef="Any" id="_16a0f50b-8f2b-437c-85c0-0245f54e970d" triso:expressionId="_e86fbb34-4830-4aab-8607-4a1a780c7537" triso:descriptionVisible="false">
+            <semantic:text>for item in Meals return
+  if every a in Guest Profile.Allergies satisfies not(list contains(item.allergens, a)) then
+    item.name
+  else
+    null</semantic:text>
+        </semantic:literalExpression>
+    </semantic:decision>
+    <semantic:decision id="_7de829be-d743-41bf-8967-1b3bbf95aa35" name="SuitableMeal" triso:readOnly="false" triso:useOutputTypeAsAnswer="false">
+        <semantic:variable name="SuitableMeal" id="_a25aa25a-1234-4a46-8357-cb5a481f9cb3" typeRef="Any"/>
+        <semantic:informationRequirement id="_b353de3a-6080-4f16-bebc-3270ad54c80c" triso:readOnly="false">
+            <semantic:requiredDecision href="#_ca2fc131-d3a4-4c8e-98f0-8d8e580cf7ce"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_3f640f29-46ab-475f-9a47-0f98a37d5fe3" triso:readOnly="false">
+            <semantic:requiredDecision href="#_01f0a2a0-7ad7-40c1-ae93-fba3cd3f42e0"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_9aeee91e-489d-46af-b447-60adfa520349" triso:readOnly="false">
+            <semantic:requiredInput href="#_b181f1a2-6603-4d9d-9922-f3b991173a7b"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_87d5d8c3-6a32-4c72-9f1a-36af5ea928ad" triso:readOnly="false">
+            <semantic:requiredDecision href="#_ffe7ac2a-682c-4e47-b4a2-93ac81d68b75"/>
+        </semantic:informationRequirement>
+        <semantic:literalExpression typeRef="Any" id="_a73c5d36-deba-4f91-9361-88ed36e7f6b9" triso:expressionId="_b6f1435b-2606-45c2-ada2-03eeb34befc3" triso:descriptionVisible="false">
+            <semantic:text>for item in Meals return
+  if list contains(MatchesDiet, item.name) and list contains(MatchesAllergies, item.name) and list contains(MatchesCalories, item.name)
+  then item
+  else ""</semantic:text>
+        </semantic:literalExpression>
+    </semantic:decision>
+    <semantic:decision id="_ffe7ac2a-682c-4e47-b4a2-93ac81d68b75" name="MatchesCalories" triso:readOnly="false" triso:useOutputTypeAsAnswer="false">
+        <semantic:variable name="MatchesCalories" id="_f5f02464-ea78-4984-a625-c2a714e28c03" typeRef="Any"/>
+        <semantic:informationRequirement id="_95a4443d-9c15-47f8-bb18-b166efada9d7" triso:readOnly="false">
+            <semantic:requiredInput href="#_b181f1a2-6603-4d9d-9922-f3b991173a7b"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_ef0e93cf-0522-4333-9add-f1b3eb9e13d6" triso:readOnly="false">
+            <semantic:requiredInput href="#_c106993f-f1a6-451b-95b6-32c036649a03"/>
+        </semantic:informationRequirement>
+        <semantic:for id="_6731d278-f9e3-4850-9644-8b1eafaed0da" triso:descriptionVisible="false" iteratorVariable="item" typeRef="Any" triso:expressionId="_68da4b57-f447-40de-bbfa-1f58ab2c6e06">
+            <semantic:in id="_23d19467-d06a-4264-ae81-8b47f0b1580d">
+                <semantic:literalExpression id="_e91e0f20-385e-459d-8036-11b62d8672a8" triso:descriptionVisible="false">
+                    <semantic:text>Meals</semantic:text>
+                </semantic:literalExpression>
+            </semantic:in>
+            <semantic:return id="_42786672-ea9a-4b12-85a3-779f87daf0e6">
+                <semantic:decisionTable triso:descriptionVisible="false" id="_9aafbca9-dc8c-4015-9d40-64bb44b690af" hitPolicy="FIRST" outputLabel="return">
+                    <semantic:input id="_37fb9a99-c559-4331-a2b5-58d61d9b49d9" triso:allowNull="true" label="Guest Profile.CalorieConscious">
+                        <semantic:inputExpression typeRef="boolean">
+                            <semantic:text>Guest Profile.CalorieConscious</semantic:text>
+                        </semantic:inputExpression>
+                    </semantic:input>
+                    <semantic:input id="_87839a05-b073-4b80-abf1-6240ccf45828" triso:allowNull="true" label="item.calories">
+                        <semantic:inputExpression typeRef="number">
+                            <semantic:text>item.calories</semantic:text>
+                        </semantic:inputExpression>
+                    </semantic:input>
+                    <semantic:output id="_66bb7bed-3ade-4316-b429-328fa539121e" triso:allowNull="true"/>
+                    <semantic:annotation name="Description"/>
+                    <semantic:rule id="_02aa69f3-59a7-4f3a-8319-8b7bfd8c4e99">
+                        <semantic:inputEntry id="_bc97d839-fcb6-45da-8c0c-5bc220065a7e">
+                            <semantic:text>true</semantic:text>
+                        </semantic:inputEntry>
+                        <semantic:inputEntry id="_2b16ba50-898f-48cd-9e6c-dd62ff899c82">
+                            <semantic:text>&lt;500</semantic:text>
+                        </semantic:inputEntry>
+                        <semantic:outputEntry id="_1c5abacf-b83c-4c2b-b0a4-ab7d6478181d">
+                            <semantic:text>item.name</semantic:text>
+                        </semantic:outputEntry>
+                        <semantic:annotationEntry>
+                            <semantic:text/>
+                        </semantic:annotationEntry>
+                    </semantic:rule>
+                    <semantic:rule id="_ad810ef0-a2bb-422c-b51f-532dfc584daf">
+                        <semantic:inputEntry id="_e8b1208c-2312-4cab-8f99-700aa552a855">
+                            <semantic:text>false</semantic:text>
+                        </semantic:inputEntry>
+                        <semantic:inputEntry id="_cbda8cf6-73f5-4895-a6eb-c2af27d9b53d">
+                            <semantic:text>-</semantic:text>
+                        </semantic:inputEntry>
+                        <semantic:outputEntry id="_8866cab1-219c-40f0-b90a-9ceafdc26939">
+                            <semantic:text>item.name</semantic:text>
+                        </semantic:outputEntry>
+                        <semantic:annotationEntry>
+                            <semantic:text/>
+                        </semantic:annotationEntry>
+                    </semantic:rule>
+                    <semantic:rule id="_bed349f3-c94e-4e36-8074-4448fe42007a">
+                        <semantic:inputEntry id="_81a6baa7-cf5d-407a-bf31-3a8f7842e8a5">
+                            <semantic:text>true</semantic:text>
+                        </semantic:inputEntry>
+                        <semantic:inputEntry id="_b529396e-6169-4075-b4e8-1aa8d9d4082f">
+                            <semantic:text>&gt;=500</semantic:text>
+                        </semantic:inputEntry>
+                        <semantic:outputEntry id="_24b62d99-7a28-4361-8952-3a5ee494921f">
+                            <semantic:text>null</semantic:text>
+                        </semantic:outputEntry>
+                        <semantic:annotationEntry>
+                            <semantic:text/>
+                        </semantic:annotationEntry>
+                    </semantic:rule>
+                </semantic:decisionTable>
+            </semantic:return>
+        </semantic:for>
+    </semantic:decision>
+    <semantic:decision id="_865f0734-73f3-4850-8d55-2fcf7e6dc0f1" name="Sort by Course" triso:readOnly="false">
+        <semantic:variable name="Sort by Course" id="_b62ed6c0-7239-481a-9c4d-e2c863755d53" typeRef="Any"/>
+        <semantic:informationRequirement id="_9d5a36d6-e12d-441c-82fc-4e379efecc78" triso:readOnly="false">
+            <semantic:requiredDecision href="#_7de829be-d743-41bf-8967-1b3bbf95aa35"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_c94939c1-2ca9-4f9a-9d4e-25fe647080c6" triso:readOnly="false">
+            <semantic:requiredInput href="#_cff74c48-82df-49cb-adb1-ac0ab0371d13"/>
+        </semantic:informationRequirement>
+        <semantic:literalExpression id="_b14be72a-52b9-4a56-b60e-6e7d5e9e515d" triso:descriptionVisible="false" typeRef="Any" triso:expressionId="_43b89aed-a994-46ef-8757-4a994064082a">
+            <semantic:text>(for item in SuitableMeal return 
+  if Course = "" or item.course = Course then item.name else null)
+  [item != null]</semantic:text>
+        </semantic:literalExpression>
+    </semantic:decision>
+    <semantic:inputData id="_cff74c48-82df-49cb-adb1-ac0ab0371d13" name="Course" triso:readOnly="false">
+        <semantic:variable name="Course" id="_49746ee6-3af1-441c-993c-2a3507754e51" typeRef="tCourse"/>
+    </semantic:inputData>
+    <dmndi:DMNDI>
+        <dmndi:DMNDiagram id="_f11cbcbc-f5f5-48a9-bc4d-a6a98c3d1a07" triso:modelElementRef="_361ed35e-987e-48e3-8a26-a9cd6e521a0c" name="Page 1">
+            <di:extension/>
+            <dmndi:Size height="1050" width="1485"/>
+            <dmndi:DMNShape id="_0907374d-187c-43ae-ad8f-e54ecdbbef3d" dmnElementRef="_c106993f-f1a6-451b-95b6-32c036649a03">
+                <dc:Bounds x="230.25879846101535" y="413.99996989965706" width="135.48234176635745" height="60.000007629394474"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_1340e4ea-4a1d-403d-b9a1-0abbc217781c" dmnElementRef="_b181f1a2-6603-4d9d-9922-f3b991173a7b">
+                <dc:Bounds x="469.25881282047357" y="413.99996681511686" width="135.48234176635725" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_3b435987-b471-407c-b549-d08af4563290" dmnElementRef="_01f0a2a0-7ad7-40c1-ae93-fba3cd3f42e0">
+                <dc:Bounds x="460.49998719990276" y="586.3332940538746" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_477ef9e7-c93b-4667-a753-a0e474a22a28" dmnElementRef="_ca2fc131-d3a4-4c8e-98f0-8d8e580cf7ce">
+                <dc:Bounds x="221.49997847527396" y="586.3333036353202" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_dded45a7-6f30-4cbb-97ea-a7e42d996b61" dmnElementRef="_7de829be-d743-41bf-8967-1b3bbf95aa35">
+                <dc:Bounds x="337.49995927512964" y="769.3333011766288" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_b971b667-759a-4d4c-923b-94b79f1c6a4d" dmnElementRef="_ffe7ac2a-682c-4e47-b4a2-93ac81d68b75">
+                <dc:Bounds x="694.8333137234056" y="586.3332844724295" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_50be4627-a3eb-40b1-87b7-5dc8e3c2ee59" dmnElementRef="_865f0734-73f3-4850-8d55-2fcf7e6dc0f1">
+                <dc:Bounds x="581.3311434931416" y="769.3333011766288" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_fe48e507-8e77-4163-b458-b865a58e45d4" dmnElementRef="_cff74c48-82df-49cb-adb1-ac0ab0371d13">
+                <dc:Bounds x="671.5921378364756" y="413.9999637305768" width="135.48234176635742" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNEdge id="_44b40ded-8510-4622-8722-36bbaffcfd70" dmnElementRef="_5fc05067-fd71-493d-b727-b9b873644e36">
+                <di:waypoint x="307.99677072053686" y="473.999969899657"/>
+                <di:waypoint x="307.99677072053686" y="558.1666313956206"/>
+                <di:waypoint x="526.2483726123254" y="558.1666313956206"/>
+                <di:waypoint x="526.9999871999028" y="586.3332940538746"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_085fa093-172c-4fb0-8014-5e820acafae4" dmnElementRef="_499773e5-c87e-4558-80bc-53667c03f475">
+                <di:waypoint x="297.99677072053686" y="473.999969899657"/>
+                <di:waypoint x="297.99997847527396" y="586.3333036353202"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_ab8febc0-ed42-485d-a006-799063de0f8a" dmnElementRef="_b353de3a-6080-4f16-bebc-3270ad54c80c">
+                <di:waypoint x="297.99997847527396" y="646.3333036353201"/>
+                <di:waypoint x="297.99997847527396" y="673.8333025847885"/>
+                <di:waypoint x="403.99995927512964" y="673.8333025847885"/>
+                <di:waypoint x="403.99995927512964" y="769.3333011766288"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_103119cf-2750-4017-a38f-4854bda431b3" dmnElementRef="_3f640f29-46ab-475f-9a47-0f98a37d5fe3">
+                <di:waypoint x="536.9999871999028" y="646.3332940538746"/>
+                <di:waypoint x="536.4999696165341" y="676.5525874728007"/>
+                <di:waypoint x="423.99995927512964" y="676.5525874728007"/>
+                <di:waypoint x="423.99995927512964" y="769.3333011766288"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_467b9eeb-a64f-465f-a0f7-62a61081800a" dmnElementRef="_9aeee91e-489d-46af-b447-60adfa520349">
+                <di:waypoint x="516.996785079995" y="473.99996681511686"/>
+                <di:waypoint x="516.9967687610332" y="523.3333052721359"/>
+                <di:waypoint x="413.99995927512964" y="523.3333052721359"/>
+                <di:waypoint x="413.99995927512964" y="769.3333011766288"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_63ba2885-83f3-415d-8325-2a332de3e1ad" dmnElementRef="_87d5d8c3-6a32-4c72-9f1a-36af5ea928ad">
+                <di:waypoint x="771.3333137234056" y="646.3332844724295"/>
+                <di:waypoint x="770.6666283185305" y="690.8332935844883"/>
+                <di:waypoint x="433.9999592751296" y="690.8332935844883"/>
+                <di:waypoint x="433.99995927512964" y="769.3333011766288"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_2b692636-0ee4-4985-9ca3-4a93c5234db1" dmnElementRef="_95a4443d-9c15-47f8-bb18-b166efada9d7">
+                <di:waypoint x="546.9967850799949" y="473.99996681511686"/>
+                <di:waypoint x="546.9967687610331" y="539.1666277224848"/>
+                <di:waypoint x="770.3333137681091" y="539.1666277224848"/>
+                <di:waypoint x="771.3333137234056" y="586.3332844724295"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_4a7cc600-6557-4e76-ac8a-fadf5a048372" dmnElementRef="_ef0e93cf-0522-4333-9add-f1b3eb9e13d6">
+                <di:waypoint x="317.99677072053686" y="473.999969899657"/>
+                <di:waypoint x="318.035161918375" y="546.159058333797"/>
+                <di:waypoint x="760.3333137681091" y="547.6590582667418"/>
+                <di:waypoint x="761.3333137234056" y="586.3332844724295"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_d6dd3944-4fb6-4c29-abf4-7eac1ad28ba0" dmnElementRef="_409a34eb-dbb9-4f37-b4b6-899da03ef9e6">
+                <di:waypoint x="526.9967850799949" y="473.99996681511686"/>
+                <di:waypoint x="526.9967687610331" y="505.0833046076217"/>
+                <di:waypoint x="526.9967687610331" y="536.1666374380407"/>
+                <di:waypoint x="404.4983746463337" y="536.1666374380407"/>
+                <di:waypoint x="404.4983746463337" y="536.1666374380407"/>
+                <di:waypoint x="337.99997847527396" y="536.1666374380407"/>
+                <di:waypoint x="337.99997847527396" y="586.3333036353202"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_8f01c474-c71a-4cf1-b3d2-3597786abf57" dmnElementRef="_9d5a36d6-e12d-441c-82fc-4e379efecc78">
+                <di:waypoint x="490.49995927512964" y="799.3333011766288"/>
+                <di:waypoint x="581.3311434931416" y="799.3333011766288"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_7f17614a-5281-4da7-a07b-c1e35fa033fe" dmnElementRef="_c94939c1-2ca9-4f9a-9d4e-25fe647080c6">
+                <di:waypoint x="739.330110095997" y="473.9999637305768"/>
+                <di:waypoint x="739.330110095997" y="530.6666410785296"/>
+                <di:waypoint x="657.8311434931416" y="530.6666410785296"/>
+                <di:waypoint x="657.8311434931416" y="769.3333011766288"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_e9dba2dc-b4a1-45f8-abed-4ef25efb3aac" dmnElementRef="_b96fc31e-b7de-4da1-8173-852befafa078">
+                <di:waypoint x="536.9967850799949" y="473.99996681511686"/>
+                <di:waypoint x="536.9999871999028" y="586.3332940538746"/>
+                <dmndi:DMNLabel sharedStyle="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0"/>
+            </dmndi:DMNEdge>
+        </dmndi:DMNDiagram>
+        <dmndi:DMNStyle id="LS_a18d6529-d371-4e96-96cb-f11f76d12ce2_0" fontFamily="arial,helvetica,sans-serif" fontSize="11" fontBold="false" fontItalic="false" fontUnderline="false" fontStrikeThrough="false"/>
+    </dmndi:DMNDI>
+</semantic:definitions>
